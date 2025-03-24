@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;*/
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;*/
+import com.dhan.model.*;
+import com.dhan.service.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -52,7 +55,7 @@ public class HelloController {
     private String user="www.ghochu.prasad@gmail.com";
     private String pass="paytm13121989krishna123";*/
 
-    /*@Autowired
+    @Autowired
     private UsersProfileService usersProfileService;
     @Autowired
     private ContactUsService contactUsService;
@@ -63,70 +66,64 @@ public class HelloController {
     @Autowired
     private ApplyForLoanService applyForLoanService;
     @Autowired
-    private IntrestInInvestService intrestInInvestService;*/
+    private IntrestInInvestService intrestInInvestService;
 
 
     @GetMapping({"/","/index"})
-    public String printWelcome(ModelMap model) {
+    public String showHome(ModelMap model) {
         model.addAttribute("world","krishna");
         return "index";
     }
 
-    /*@RequestMapping("/welcome")
+    @GetMapping("/welcome")
     public String showWelcome()
     {
         return "welcome";
     }
 
-    @RequestMapping("/msg")
+    @GetMapping("/msg")
     public String showMsg()
     {
         return "msg";
     }
 
-    @RequestMapping("/index")
-    public String showHome()
-    {
-        return "index";
-    }
-
-    @RequestMapping("/borrower")
+    @GetMapping("/borrower")
     public String showBorrower()
     {
         return "borrower";
     }
 
-    @RequestMapping("/lender")
+    @GetMapping("/lender")
     public String showLender()
     {
         return "lender";
     }
 
-    @RequestMapping("/faq")
+    @GetMapping("/faq")
     public String showFAQ()
     {
         return "faq";
     }
 
-    @RequestMapping("/aboutUs")
+    @GetMapping("/aboutUs")
     public String showAboutUs()
     {
         return "aboutUs";
     }
 
-    @RequestMapping("/mgt")
+    @GetMapping("/mgt")
     public String showMgt()
     {
         return "mgt";
     }
 
-    @RequestMapping("/roles")
+    @GetMapping("/roles")
     public String showRoles()
     {
         return "roles";
     }
 
-    @RequestMapping("/terms")
+    @GetMapping("/terms")
     public String showTerms()
     {
         return "terms";
@@ -138,16 +135,16 @@ public class HelloController {
         return "signUp";
     }
 
-    @RequestMapping("/applyForLoan")
+    @GetMapping("/applyForLoan")
     public String showApplyForLoan()
     {
-        return "happlyForLoan";
-    }*/
+        return "applyForLoan";
+    }
 
 
 
 
-    /*@RequestMapping(value="/saveUser",method=RequestMethod.POST)
+    /*@PostMapping(value="/saveUser")
     public String saveUsersProfile(HttpServletRequest request,ModelMap model)
     {
         try
@@ -227,7 +224,7 @@ public class HelloController {
     }*/
 
 
-    /*@RequestMapping(value="/testingMail",method=RequestMethod.POST)
+    /*@PostMapping(value="/testingMail")
     public String testingMail(ModelMap model)
     {
         try
@@ -257,7 +254,7 @@ public class HelloController {
     }*/
 
 
-    /*@RequestMapping(value="/contactUs",method=RequestMethod.POST)
+    /*@PostMapping(value="/contactUs")
     public String saveContactUsData(HttpServletRequest request)
     {
         String email;
@@ -293,7 +290,7 @@ public class HelloController {
     }*/
 
 
-    /*@RequestMapping(value="/replyContactUs/{emailId}/{subjectEnquiry}",method = RequestMethod.POST)
+    /*@PostMapping(value="/replyContactUs/{emailId}/{subjectEnquiry}")
     public String replyContactUs(@PathVariable("emailId")String emailId,@PathVariable("subjectEnquiry")String subjectEnquiry,HttpServletRequest request)
     {
         String replyText=request.getParameter("replyText");
@@ -319,17 +316,16 @@ public class HelloController {
 
 
 
-    /*@RequestMapping(value="/showContactUsDetails/{id}",method=RequestMethod.GET)
+    @GetMapping(value="/showContactUsDetails/{id}")
     public String showContactUsDetails(@PathVariable("id")Integer id,ModelMap model)
     {
         ContactUs contactUs=contactUsService.getContactUsById(id);
-
         model.addAttribute("contactUs",contactUs);
         return "contactUsDetails";
-    }*/
+    }
 
 
-    /*@RequestMapping(value="/verifyServiceCity",method=RequestMethod.POST)
+    /*@PostMapping(value="/verifyServiceCity")
     public String availabilityOfServiceCity(HttpServletRequest request,ModelMap model)
     {
         String pincode=request.getParameter("verifyPincode");
@@ -355,7 +351,7 @@ public class HelloController {
     }*/
 
 
-    /*@RequestMapping(value="/feedback",method=RequestMethod.POST)
+    /*@PostMapping(value="/feedback")
     public String saveFeedback(HttpServletRequest request)
     {
         String name=request.getParameter("name");
@@ -395,17 +391,16 @@ public class HelloController {
 
 
 
-    /*@RequestMapping(value="/showFeedbackDetails/{id}",method=RequestMethod.GET)
+    @GetMapping(value="/showFeedbackDetails/{id}")
     public String showFeedbackDetails(@PathVariable("id")Integer id,ModelMap model)
     {
         Feedback feedback=feedbackService.getFeedbackById(id);
-
         model.addAttribute("feedback",feedback);
         return "feedbackDetails";
-    }*/
+    }
 
 
-    /*@RequestMapping(value="/replyFeedback/{emailId}/{subjectFeedback}",method = RequestMethod.POST)
+    /*@PostMapping(value="/replyFeedback/{emailId}/{subjectFeedback}")
     public String replyFeedback(@PathVariable("emailId")String emailId,@PathVariable("subjectFeedback")String subjectFeedback,HttpServletRequest request)
     {
         String replyText=request.getParameter("replyText");
@@ -431,7 +426,7 @@ public class HelloController {
     }
 
 
-    @RequestMapping(value="/forgotPassword",method=RequestMethod.GET)
+    @RequestMapping(value="/forgotPassword")
     public String showForgotPassword()
     {
         return "fPassword";
@@ -442,7 +437,7 @@ public class HelloController {
 
 
 
-    /*@RequestMapping(value="/getPassword",method=RequestMethod.POST)
+    /*@PostMapping(value="/getPassword")
     public String getPassword(HttpServletRequest request,ModelMap model) {
         String regEmail, password;
         regEmail = request.getParameter("registerEmail");
@@ -471,7 +466,7 @@ public class HelloController {
 
 
 
-    /*@RequestMapping("/checkSecurityKey/{id}")
+    /*@GetMapping("/checkSecurityKey/{id}")
     public String checkSecurityKey(@PathVariable("id") Integer id,ModelMap model,HttpServletRequest request) {
 
         String securityKey=request.getParameter("securityKey");
@@ -497,21 +492,14 @@ public class HelloController {
 
 
 
-    /*@RequestMapping("/investerDetails/{id}")
+    @GetMapping("/investerDetails/{id}")
     public String showInvesterDetails(@PathVariable("id") Integer id,ModelMap model) {
-
         IntrestInInvest intrestInInvest=intrestInInvestService.getIntrestInInvestById(id);
-
-
         System.out.println("email id from IntrestInInvest   :  "+intrestInInvest.getInvestorEmail());
-
-
         UsersProfile usersProfile=usersProfileService.getUsersProfileByEmail(intrestInInvest.getInvestorEmail());
-
-
         model.addAttribute("usersProfile",usersProfile);
         return "investerDetails";
-    }*/
+    }
 
 
 
@@ -520,7 +508,7 @@ public class HelloController {
 
 
 
-    /*@RequestMapping(value="/login",method=RequestMethod.GET)
+    /*@RequestMapping(value="/login")
     public String showLogin(@RequestParam(value="error",required=false)String error,ModelMap model, @RequestParam(value="logout",required=false)String logout)
     {
         if(error!=null)
@@ -535,7 +523,7 @@ public class HelloController {
     }*/
 
 
-    /*@RequestMapping(value="/logout", method = RequestMethod.GET)
+    /*@GetMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null){
@@ -546,7 +534,7 @@ public class HelloController {
 
 
 
-   /* @RequestMapping(value = "/403", method = RequestMethod.GET)
+    @GetMapping(value = "/403")
     public String accesssDenied(Principal user,ModelMap model) {
         if (user.getName() != null) {
             model.addAttribute("msg", "Hi " + user.getName()
@@ -555,12 +543,12 @@ public class HelloController {
             model.addAttribute("msg","You do not have permission to access this page!");
         }
         return "403";
-    }*/
+    }
 
 
 
 
-    /*@RequestMapping(value = "/profile")
+    /*@GetMapping(value = "/profile")
     public String my(Authentication authentication) {
         boolean isUser = false;
         boolean isAdmin = false;
