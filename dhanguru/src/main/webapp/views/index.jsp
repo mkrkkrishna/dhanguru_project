@@ -1084,7 +1084,7 @@
             tabHandle: '.handleCheckCity',                     //class of the element that will become your tab
             pathToTabImage: 'resources/images/verifyServiceCity.jpg', //path to the image for the tab //Optionally can be set using css
             imageHeight: '122px',                     //height of tab image           //Optionally can be set using css
-            imageWidth: '200px',                       //width of tab image            //Optionally can be set using css
+            imageWidth: '40px',                       //width of tab image            //Optionally can be set using css
             tabLocation: 'right',                      //side of screen where tab lives, top, right, bottom, or left
             speed: 300,                               //speed of animation
             action: 'click',                          //options: 'click' or 'hover', action to trigger animation
