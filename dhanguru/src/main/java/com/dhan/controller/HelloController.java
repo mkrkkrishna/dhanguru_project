@@ -53,7 +53,7 @@ public class HelloController {
     /*private String host="smtp.gmail.com";*//*mail.careerguru4you.in*//*
     private String portNo="587";
     private String user="www.ghochu.prasad@gmail.com";
-    private String pass="paytm13121989krishna123";*/
+    private String pass="";*/
 
     @Autowired
     private UsersProfileService usersProfileService;
