@@ -29,7 +29,7 @@ public class UserController {
     private String host="smtp.gmail.com";
     private String portNo="587";
     private String user="www.ghochu.prasad@gmail.com";
-    private String pass="rohitkumarmishra";
+    private String pass="";
 
     @Autowired
 	private UsersProfileService usersProfileService;
